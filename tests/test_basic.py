@@ -57,13 +57,13 @@ def test_gibbs_single_root_with_estimation():
     graf = createNoisyGraph(n, m, alpha=alpha, beta=beta, K=K)[0]
         
     res = gibbsToConv(graf, Burn=20, M=40, DP=False, method="full",
-                                   K=1, alpha=0, beta=0, tol=0.02)
+                                   K=1, tol=0.02)
         
     assert abs(sum(res[0]) - 1) < 1e-3
             
             
     res2 = gibbsToConv(graf, Burn=20, M=40, DP=False, method="collapsed",
-                                   K=1, alpha=0, beta=0, tol=0.02)
+                                   K=1, tol=0.02)
     
     assert sum( np.abs( res[0] - res2[0] ))/2 < 0.2    
     
@@ -72,7 +72,7 @@ def test_gibbs_single_root_with_estimation():
 def test_fixed_K_roots():
     
     n = 50
-    K = 2
+    K = 3
     m = 70
     
     alpha = 1
