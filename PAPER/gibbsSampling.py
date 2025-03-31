@@ -308,6 +308,9 @@ def gibbsFull(graf, Burn=40, M=50, gap=1, alpha=0, beta=1, K=1,
         tree2root = [v]
         mypi = sampleOrdering(graf, tree2root, alpha, beta)
 
+        for e in graf.es.select(_within =mypi[0:K]):
+            e['tree'] = False
+
 
     if ("node_tree_coo" in options):
         node_tree_coo = options["node_tree_coo"]
